@@ -1,0 +1,8 @@
+section.todo-list
+  header= todo_list.title
+  p= todo_list.description
+
+  ul.todo-list-items
+    - todo_list.items.each do |item|
+      li.todo-list-item class=('completed' if item.completed)
+        = item.description

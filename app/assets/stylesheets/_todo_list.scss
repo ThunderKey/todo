@@ -1,0 +1,47 @@
+$todo-list-padding: $callout-padding;
+$todo-list-border: $callout-border;
+$todo-list-radius: $callout-radius;
+
+.todo-list-grid > .cell {
+  padding: 0.2rem;
+
+  > section.todo-list {
+    height: 100%;
+  }
+}
+
+section.todo-list {
+  position: relative;
+  margin: 0;
+  padding: $todo-list-padding;
+
+  max-height: 20rem;
+  overflow-x: auto;
+
+  border: $todo-list-border;
+  border-radius: $todo-list-radius;
+
+  // Respect the padding, fool.
+  > :first-child {
+    margin-top: 0;
+  }
+
+  > :last-child {
+    margin-bottom: 0;
+  }
+
+  > header {
+    font-weight: $global-weight-bold;
+  }
+
+  > p {
+    margin-bottom: 0;
+  }
+}
+
+.todo-list-item {
+  &.completed {
+    color: $dark-gray;
+    text-decoration: line-through;
+  }
+}

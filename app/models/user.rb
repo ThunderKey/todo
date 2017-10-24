@@ -12,4 +12,6 @@ class User < ApplicationRecord
     user.save!
     user
   end
+
+  has_many :todo_lists
 end
