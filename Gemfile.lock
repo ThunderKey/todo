@@ -1,5 +1,6 @@
 GEM
   remote: https://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actioncable (5.1.4)
       actionpack (= 5.1.4)
@@ -162,6 +163,11 @@ GEM
       bundler (>= 1.3.0)
       railties (= 5.1.4)
       sprockets-rails (>= 2.0.0)
+    rails-assets-foundation-sites (6.4.3)
+      rails-assets-jquery (>= 3.0.0)
+      rails-assets-what-input (~> 4.1.3)
+    rails-assets-jquery (3.2.1)
+    rails-assets-what-input (4.1.6)
     rails-dom-testing (2.0.3)
       activesupport (>= 4.2.0)
       nokogiri (>= 1.6)
@@ -250,6 +256,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (>= 1.8.4)
   byebug
   capistrano-bundler
   capistrano-rails
@@ -264,6 +271,7 @@ DEPENDENCIES
   omniauth-keltec
   puma
   rails (~> 5.1.4)
+  rails-assets-foundation-sites!
   sass-rails
   selenium-webdriver
   slim-rails

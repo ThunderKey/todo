@@ -1,0 +1,9 @@
+- messages = []
+- if defined? message
+  - messages << message if message.is_a? String
+  - messages += message if message.is_a? Array
+- messages.each do |msg|
+  .callout(data-closable class=(translate_flash_type type))
+    button.close-button(aria-label='Close' type='button' data-close)
+      span aria-hidden=true &times;
+    p= msg

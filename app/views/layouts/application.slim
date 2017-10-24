@@ -8,4 +8,8 @@ html
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = yield
+    = render partial: 'layouts/navigation'
+    .grid-container
+      - flash.each do |k, msg|
+        = render partial: 'layouts/flash_message', locals: {type: k, message: msg}
+      = yield

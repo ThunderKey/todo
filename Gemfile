@@ -5,6 +5,7 @@ git_source(:github) do |repo_name|
   "https://github.com/#{repo_name}.git"
 end
 
+gem 'bundler', '>= 1.8.4'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 5.1.4'
@@ -37,6 +38,10 @@ gem 'slim-rails'
 
 gem 'devise'
 gem 'omniauth-keltec'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-foundation-sites'
+end
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console

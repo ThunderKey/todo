@@ -11,5 +11,9 @@
 # about supported directives.
 #
 #= require rails-ujs
+#= require jquery
+#= require foundation-sites/foundation
 #= require turbolinks
 #= require_self
+
+$(document).on 'page:load', $(document).foundation
