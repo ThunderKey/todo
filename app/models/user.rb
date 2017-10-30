@@ -3,6 +3,8 @@ class User < ApplicationRecord
     :omniauthable, :omniauth_providers => [:keltec]
 
   validates :email, presence: true, uniqueness: true
+  validates :lastname, presence: true
+  validates :firstname, presence: true
 
   def self.from_omniauth(auth)
     user = where(provider: auth.provider, uid: auth.uid).first_or_initialize
