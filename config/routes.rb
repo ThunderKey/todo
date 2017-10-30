@@ -3,5 +3,5 @@ Rails.application.routes.draw do
 
   root to: 'static#index'
 
-  resources :todos, controller: 'todo_lists', only: [:index]
+  resources :todo_lists, path: 'todos', only: [:index, :new, :create, :edit, :update]
 end

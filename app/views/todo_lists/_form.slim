@@ -1,0 +1,12 @@
+= form_for todo_list do |f|
+  .grid-x.grid-padding-x.medium-up-2
+    .cell
+      = f.label :title do
+        | Title
+        = f.text_field :title, placeholder: 'Title'
+
+      = f.label :description do
+        | Description
+        = f.text_area :description, placeholder: 'Description'
+
+      = f.button 'Save', type: :submit, class: 'button'
