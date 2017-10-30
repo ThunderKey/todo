@@ -1,6 +1,6 @@
 class TodoListsController < ApplicationController
   def index
-    @todo_lists = current_user.todo_lists
+    @todo_lists = current_user.todo_lists.sorted
   end
 
   def new
@@ -32,6 +32,16 @@ class TodoListsController < ApplicationController
       flash.alert = 'Could not save the todo list'
       render :edit
     end
+  end
+
+  def sort
+    @todo_list = current_user.todo_lists.find params[:id]
+    after_id = params.require(:after)
+    after = after_id && current_user.todo_lists.find(after_id)
+    @todo_list.transaction do
+      @todo_list.update_position! after
+    end
+    render json: {status: :success}
   end
 
   private
