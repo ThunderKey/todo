@@ -28,3 +28,5 @@ config/secrets.yml.key
 
 /.rake_tasks
 /.cap_tasks~
+
+/spec/examples.txt
