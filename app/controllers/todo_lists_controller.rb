@@ -36,7 +36,7 @@ class TodoListsController < ApplicationController
 
   def sort
     @todo_list = current_user.todo_lists.find params[:id]
-    after_id = params.require(:after)
+    after_id = params.permit(:after)[:after]
     after = after_id && current_user.todo_lists.find(after_id)
     @todo_list.transaction do
       @todo_list.update_position! after
