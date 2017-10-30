@@ -1,4 +1,4 @@
-FactoryGirl.define do
+FactoryBot.define do
   factory :todo_list do
     user { create :user }
     sequence(:title) {|i| "List #{i}" }

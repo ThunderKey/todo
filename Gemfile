@@ -53,7 +53,7 @@ group :development, :test do
   gem 'capybara'
   gem 'selenium-webdriver'
 
-  gem 'factory_girl_rails'
+  gem 'factory_bot_rails'
   gem 'rspec-rails'
 end
 
