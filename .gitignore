@@ -30,3 +30,5 @@ config/secrets.yml.key
 /.cap_tasks~
 
 /spec/examples.txt
+
+/coverage

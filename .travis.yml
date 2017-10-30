@@ -2,6 +2,9 @@ language: ruby
 rvm:
   - ruby-2.4.0
 dist: trusty
+addons:
+  code_climate:
+    repo_token: SW65WMrYUxN7arZkoNAObzGm28XdL4nnjI2rz7sMdvt4HoguK36puuxJvUl0dRDNmW9oxSIztjn/rrUWL7G5kI4u6mMUTSsSrY6pF8+krZrKdGEYic/SIfig+g6dQwUIJkBiYqCCHrVfL6afJPwYaN/n36JFWbUBpZN2JZoKtv0FmGwf4/who4Uw/mif7RcF1ebsrg5Egu3iaTMu6dVtKDfgHwz6kdjEDb8GfqeqQye1tizJs3ShjtZ7UH2St3XpYe7xMXBwYMJe9W9OWs8sXkFNKIeDceZsRfjrnph/AMqybddH9xy3V28ppXgVFnZIo7f6c9YqWysklkr54NKbhXVxPXHsvWLgqtfMN+ufgzFTxehOs5PitRt2IcuP2AKGfuA7LDOuU65fRGe/iqASWb7svRE4aAo8jXsHxbQbl7i7fsc9/fslVTsCslRwZjSkOm8tLMITPd67Gpk76SMHeavvFkc3HdeSkEaIpK7CsQQ3xDEvg+1KOj6WYsP8lA1iFpidyPjp1KoK5CgiXygsabyhaYnnM5PahLr6wSQZPROkVLiTt3+mxz1KtnSmeJxEnT5u2pePjAqMjCx1l+WRy5WJCoZXNWXHHQNII3pX2hynax0eWWhwEW9rvGdbK3QDI5XrE8Fr0UoWh0lmRqW8UQMJQG50SyNRdEbrdppoFZ4=
 sudo: required
 addons:
   apt:
@@ -21,6 +24,8 @@ before_script:
   - bundle exec rake db:migrate
 script:
   - bundle exec rspec
+after_success:
+  - bundle exec codeclimate-test-reporter
 notifications:
   email:
     - nicolasganz37+travis@gmail.com
