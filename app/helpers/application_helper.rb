@@ -1,10 +1,11 @@
 module ApplicationHelper
   def translate_flash_type type
     type = type.to_sym
-    case type
+    cls = case type
       when :notice; :primary
-      when :error;  :alert
+      when :error, :alert;  :danger
       else type
     end
+    "uk-alert-#{cls}"
   end
 end

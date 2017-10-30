@@ -12,8 +12,7 @@
 #
 #= require rails-ujs
 #= require jquery
-#= require foundation-sites/foundation
+#= require uikit/uikit
+#= require uikit/uikit-icons
 #= require turbolinks
 #= require_self
-
-$(document).on 'page:load', $(document).foundation

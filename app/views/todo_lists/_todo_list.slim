@@ -1,5 +1,5 @@
-section.todo-list
-  header= link_to todo_list.title, edit_todo_list_path(todo_list)
+section.todo-list data-todo-list-id=todo_list.id
+  header.sortable-header= link_to todo_list.title, edit_todo_list_path(todo_list)
   p= todo_list.description
 
   ul.todo-list-items

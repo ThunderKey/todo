@@ -1,12 +1,12 @@
-= form_for todo_list do |f|
-  .grid-x.grid-padding-x.medium-up-2
-    .cell
-      = f.label :title do
-        | Title
-        = f.text_field :title, placeholder: 'Title'
+= form_for todo_list, class: 'uk-form-stacked' do |f|
+  div
+    = f.label :title, class: 'uk-form-label'
+    .uk-form-controls
+      = f.text_field :title, placeholder: 'Title', class: 'uk-input'
 
-      = f.label :description do
-        | Description
-        = f.text_area :description, placeholder: 'Description'
+  div
+    = f.label :description, class: 'uk-form-label'
+    .uk-form-controls
+      = f.text_area :description, placeholder: 'Description', class: 'uk-textarea'
 
-      = f.button 'Save', type: :submit, class: 'button'
+  = f.button 'Save', type: :submit, class: 'uk-button'
