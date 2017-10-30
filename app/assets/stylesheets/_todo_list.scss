@@ -1,4 +1,21 @@
-.sortable-header {
-  width: 100%;
-  cursor: move;
+
+
+section.todo-list {
+  @extend .uk-card;
+  @extend .uk-card-default;
+  @extend .uk-card-body;
+
+  height: 100%;
+
+  header {
+    @extend .uk-card-title;
+    width: 100%;
+  }
+}
+
+.todo-list-item {
+  &.completed {
+    color: lighten($global-color, 20%);
+    text-decoration: line-through;
+  }
 }

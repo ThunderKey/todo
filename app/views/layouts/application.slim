@@ -9,7 +9,7 @@ html
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
     = render partial: 'layouts/navigation'
-    #main-container
+    .uk-container
       - flash.each do |k, msg|
         = render partial: 'layouts/flash_message', locals: {type: k, message: msg}
       = yield
