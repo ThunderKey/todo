@@ -39,6 +39,8 @@ gem 'slim-rails'
 gem 'devise'
 gem 'omniauth-keltec'
 
+gem 'gemsurance'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-foundation-sites'
 end
