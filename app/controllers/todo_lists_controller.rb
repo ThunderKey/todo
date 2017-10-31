@@ -17,7 +17,7 @@ class TodoListsController < ApplicationController
       flash.notice = 'Todo list created successfully'
       redirect_to todo_lists_path
     else
-      flash.alert = 'Could not save the todo list'
+      flash.now.alert = 'Could not save the todo list'
       render :new
     end
   end
@@ -29,7 +29,7 @@ class TodoListsController < ApplicationController
       flash.notice = 'Todo list updated successfully'
       redirect_to todo_lists_path
     else
-      flash.alert = 'Could not save the todo list'
+      flash.now.alert = 'Could not save the todo list'
       render :edit
     end
   end
