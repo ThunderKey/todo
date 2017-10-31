@@ -11,6 +11,13 @@ class TodoList < ApplicationRecord
 
   attr_accessor :skip_position_validation
   validates :position, presence: true, uniqueness: {scope: :user_id}, unless: -> { archived || skip_position_validation }
+  validates :title, presence: true
+
+  before_validation(on: :create) do
+    unless position
+      self.position = (user.todo_lists.pluck(:position).max || -1) + 1
+    end
+  end
 
   def update_position! after
     old_position = position
