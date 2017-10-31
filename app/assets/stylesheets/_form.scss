@@ -1,0 +1,32 @@
+// seperate because @extends would not override them
+.form-label {
+  box-sizing: border-box;
+  width: 100%;
+}
+
+.form-row {
+  @extend .uk-grid-collapse;
+  margin-top: 1rem !important;
+
+  > .form-field {
+    @extend .uk-width-expand;
+  }
+
+  > .form-label {
+    @extend .uk-width-1-4\@s;
+    @extend .uk-width-1-6\@m;
+
+    height: $form-height;
+    display: flex;
+
+    label {
+      display: inline-block;
+      margin-top: auto;
+      margin-bottom: auto;
+    }
+
+    &.empty {
+      height: 0;
+    }
+  }
+}

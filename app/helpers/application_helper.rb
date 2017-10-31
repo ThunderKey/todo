@@ -10,10 +10,12 @@ module ApplicationHelper
   end
 
   def form_field form, key, label_config: {}, &block
-    content_tag(:div) do
-      errors = form.object.errors[key]
-      concat form.label(key, {:class => 'uk-form-label'}.merge(label_config))
-      concat(content_tag(:div, class: 'uk-form-controls') do
+    errors = form.object.errors[key]
+    content_tag(:div, class: 'form-row', 'uk-grid' => '') do
+      concat(content_tag(:div, class: 'form-label') do
+        form.label(key, {:class => "uk-form-label #{'uk-text-danger' if errors.any?}"}.merge(label_config))
+      end)
+      concat(content_tag(:div, class: 'form-field uk-form-controls') do
         block.call key, ('uk-form-danger' if errors.any?), form.object.class.human_attribute_name(key)
         if errors.any?
           concat content_tag(:span, errors.join(', '), class: 'uk-text-danger')
