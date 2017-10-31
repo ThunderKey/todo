@@ -1,12 +1,14 @@
+- if todo_list.errors.any?
+  .uk-alert.uk-alert-danger
+    ul.uk-list.uk-list-divider
+      - todo_list.errors.full_messages.each do |message|
+        li= message
+
 = form_for todo_list, class: 'uk-form-stacked' do |f|
-  div
-    = f.label :title, class: 'uk-form-label'
-    .uk-form-controls
-      = f.text_field :title, placeholder: 'Title', class: 'uk-input'
+  = form_field f, :title do |key, cls, name|
+    = f.text_field key, placeholder: name, class: "uk-input #{cls}"
 
-  div
-    = f.label :description, class: 'uk-form-label'
-    .uk-form-controls
-      = f.text_area :description, placeholder: 'Description', class: 'uk-textarea'
+  = form_field f, :description do |key, cls, name|
+    = f.text_area key, placeholder: name, class: "uk-textarea #{cls}"
 
-  = f.button 'Save', type: :submit, class: 'uk-button'
+  = f.button 'Save', type: :submit, class: 'uk-button uk-button-primary'
