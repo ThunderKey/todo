@@ -1,15 +1,23 @@
 doctype html
-html
+html lang=I18n.locale dir="ltr"
   head
     meta charset="utf-8"
+
+    // Instruct IE to use its latest rendering engine
+    meta http-equiv="x-ua-compatible" content="ie=edge"
+
+    meta name="viewport" content="width=device-width, initial-scale=1"
+
     title Todo
+
     = csrf_meta_tags
 
     = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload'
     = javascript_include_tag 'application', 'data-turbolinks-track': 'reload'
   body
-    = render partial: 'layouts/navigation'
-    .uk-container
+    header role="banner"
+      = render partial: 'layouts/navigation'
+    main.uk-container role="main"
       - flash.each do |k, msg|
         = render partial: 'layouts/flash_message', locals: {type: k, message: msg}
       = yield
