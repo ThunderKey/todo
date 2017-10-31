@@ -1,6 +1,6 @@
-ul#todo-lists.sortable.uk-grid-small(class='uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m' uk-sortable uk-grid)
+ul#todo-lists.uk-grid-small(class='uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m' uk-sortable uk-grid)
   - @todo_lists.each do |todo_list|
-    li
+    li.sortable
       = render partial: 'todo_list', locals: {todo_list: todo_list}
 
 = link_to 'New', new_todo_list_path, class: 'uk-button uk-button-primary'
