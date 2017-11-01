@@ -1,5 +1,10 @@
 section.todo-list data-todo-list-id=todo_list.id
-  header.sortable-header= link_to todo_list.title, edit_todo_list_path(todo_list)
+  header
+    = todo_list.title
+    ul.uk-iconnav.uk-align-right
+      li= link_to '', edit_todo_list_path(todo_list), 'uk-icon': 'file-edit', 'uk-tooltip': '', title: 'Edit'
+
+
   p= todo_list.description
 
   ul.todo-list-items

@@ -10,6 +10,17 @@ section.todo-list {
   header {
     @extend .uk-card-title;
     width: 100%;
+
+    > .uk-iconnav {
+      display: inline-flex;
+      height: 1.4em;
+      margin: 0;
+
+      > li {
+        margin-top: auto;
+        margin-bottom: auto;
+      }
+    }
   }
 }
 
