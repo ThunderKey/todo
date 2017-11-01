@@ -8,6 +8,8 @@ section.todo-list data-todo-list-id=todo_list.id
         li= link_to '', archive_todo_list_path(todo_list), method: :put, 'uk-icon': 'pull', 'uk-tooltip': '', title: t('page.actions.archive')
       - if actions.include? :restore
         li= link_to '', restore_todo_list_path(todo_list), method: :put, 'uk-icon': 'push', 'uk-tooltip': '', title: t('page.actions.restore')
+      - if actions.include? :destroy
+        li= link_to '', todo_list_path(todo_list), method: :delete, 'uk-icon': 'trash', 'uk-tooltip': '', title: t('page.actions.destroy')
 
   p= todo_list.description
 

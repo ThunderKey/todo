@@ -3,7 +3,7 @@ Rails.application.routes.draw do
 
   root to: 'static#index'
 
-  resources :todo_lists, path: 'todos', only: [:index, :new, :create, :edit, :update] do
+  resources :todo_lists, path: 'todos' do
     collection do
       get :archived
     end

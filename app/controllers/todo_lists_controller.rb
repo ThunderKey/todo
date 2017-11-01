@@ -63,15 +63,26 @@ class TodoListsController < ApplicationController
 
   def restore
     @todo_list = current_user.todo_lists.find params[:id]
-    if !@todo_list.archived
-      flash.alert = t 'page.todo_list.restore.already'
-    else
+    if @todo_list.archived
       @todo_list.archived = false
       if @todo_list.save
         flash.notice = t 'page.todo_list.restore.successful'
       else
         flash.alert = t 'page.todo_list.restore.failed', errors: @todo_list.errors.full_messages.join(',')
       end
+    else
+      flash.alert = t 'page.todo_list.restore.already'
+    end
+    redirect_back fallback_location: archived_todo_lists_path
+  end
+
+  def destroy
+    @todo_list = current_user.todo_lists.find params[:id]
+    if @todo_list.archived
+      @todo_list.destroy
+      flash.notice = t 'page.todo_list.destroy.successful'
+    else
+      flash.alert = t 'page.todo_list.destroy.not_archived'
     end
     redirect_back fallback_location: archived_todo_lists_path
   end

@@ -11,6 +11,7 @@ en:
       edit: Edit
       archive: Archive
       restore: Restore
+      destroy: Delete
       save: Save
     list:
       empty: No entries
@@ -27,6 +28,9 @@ en:
         successful: ToDo list restored successfully
         failed: 'ToDo list could not be restored: %{errors}'
         already: ToDo list is already restored
+      destroy:
+        successful: ToDo list deleted successfully
+        not_archived: The ToDo list must be archived before it can be deleted
   activerecord:
     models:
       todo_list: ToDo List
