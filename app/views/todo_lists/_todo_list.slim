@@ -3,11 +3,11 @@ section.todo-list data-todo-list-id=todo_list.id
     = todo_list.title
     ul.uk-iconnav.uk-align-right
       - if actions.include? :edit
-        li= link_to '', edit_todo_list_path(todo_list), 'uk-icon': 'file-edit', 'uk-tooltip': '', title: 'Edit'
+        li= link_to '', edit_todo_list_path(todo_list), 'uk-icon': 'file-edit', 'uk-tooltip': '', title: t('page.actions.edit')
       - if actions.include? :archive
-        li= link_to '', archive_todo_list_path(todo_list), method: :put, 'uk-icon': 'pull', 'uk-tooltip': '', title: 'Archive'
+        li= link_to '', archive_todo_list_path(todo_list), method: :put, 'uk-icon': 'pull', 'uk-tooltip': '', title: t('page.actions.archive')
       - if actions.include? :restore
-        li= link_to '', restore_todo_list_path(todo_list), method: :put, 'uk-icon': 'push', 'uk-tooltip': '', title: 'Restore'
+        li= link_to '', restore_todo_list_path(todo_list), method: :put, 'uk-icon': 'push', 'uk-tooltip': '', title: t('page.actions.restore')
 
   p= todo_list.description
 

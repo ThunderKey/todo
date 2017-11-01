@@ -1,12 +1,12 @@
 nav.uk-navbar-container(role="navigation" uk-navbar)
   .uk-navbar-left
     ul.uk-navbar-nav
-      li= link_to 'ToDo', root_path, class: 'page-title'
-      li= link_to 'List', todo_lists_path
-      li= link_to 'Archive', archived_todo_lists_path
+      li= link_to t('page.layout.title'), root_path, class: 'page-title'
+      li= link_to t('page.layout.list'), todo_lists_path
+      li= link_to t('page.layout.archive'), archived_todo_lists_path
   .uk-navbar-right
     ul.uk-navbar-nav
       - if user_signed_in?
-        li=link_to 'Logout', destroy_user_session_path, method: :delete
+        li=link_to t('page.layout.logout'), destroy_user_session_path, method: :delete
       - else
-        li=link_to 'Login', new_user_session_path
+        li=link_to t('page.layout.login'), new_user_session_path

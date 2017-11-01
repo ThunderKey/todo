@@ -4,4 +4,4 @@
       li.sortable
         = render partial: 'todo_list', locals: {todo_list: todo_list, actions: actions}
 - else
-  p No entries
+  p= t 'page.list.empty'

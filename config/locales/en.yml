@@ -1,2 +1,36 @@
 en:
-  hello: "Hello world"
+  page:
+    layout:
+      title: ToDo
+      list: List
+      archive: Archive
+      login: Login
+      logout: Logout
+    actions:
+      new: New
+      edit: Edit
+      archive: Archive
+      restore: Restore
+      save: Save
+    list:
+      empty: No entries
+    todo_list:
+      created:
+        successful: ToDo list created successfully
+      updated:
+        successful: ToDo list updated successfully
+      archive:
+        successful: ToDo list archived successfully
+        failed: 'ToDo list could not be archived: %{errors}'
+        already: ToDo list is already archived
+      restore:
+        successful: ToDo list restored successfully
+        failed: 'ToDo list could not be restored: %{errors}'
+        already: ToDo list is already restored
+  activerecord:
+    models:
+      todo_list: ToDo List
+    attributes:
+      todo_list:
+        title: Title
+        description: Description

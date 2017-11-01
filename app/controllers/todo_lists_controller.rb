@@ -18,7 +18,7 @@ class TodoListsController < ApplicationController
   def create
     @todo_list = current_user.todo_lists.new todo_list_params
     if @todo_list.save
-      flash.notice = 'Todo list created successfully'
+      flash.notice = t 'page.todo_list.created.successful'
       redirect_to todo_lists_path
     else
       render :new
@@ -29,7 +29,7 @@ class TodoListsController < ApplicationController
     @todo_list = current_user.todo_lists.find params[:id]
     @todo_list.update_attributes todo_list_params
     if @todo_list.save
-      flash.notice = 'Todo list updated successfully'
+      flash.notice = t 'page.todo_list.updated.successful'
       redirect_to todo_lists_path
     else
       render :edit
@@ -48,22 +48,30 @@ class TodoListsController < ApplicationController
 
   def archive
     @todo_list = current_user.todo_lists.find params[:id]
-    @todo_list.archived = true
-    if @todo_list.save
-      flash.notice = "Successfully archived #{@todo_list.title}"
+    if @todo_list.archived
+      flash.alert = t 'page.todo_list.archive.already'
     else
-      flash.alert = "Could not archive #{@todo_list.title}: #{@todo_list.errors.full_messages.join ','}"
+      @todo_list.archived = true
+      if @todo_list.save
+        flash.notice = t 'page.todo_list.archive.successful'
+      else
+        flash.alert = t 'page.todo_list.archive.failed', errors: @todo_list.errors.full_messages.join(',')
+      end
     end
     redirect_back fallback_location: todo_lists_path
   end
 
   def restore
     @todo_list = current_user.todo_lists.find params[:id]
-    @todo_list.archived = false
-    if @todo_list.save
-      flash.notice = "Successfully restored #{@todo_list.title}"
+    if !@todo_list.archived
+      flash.alert = t 'page.todo_list.restore.already'
     else
-      flash.alert = "Could not restore #{@todo_list.title}: #{@todo_list.errors.full_messages.join ','}"
+      @todo_list.archived = false
+      if @todo_list.save
+        flash.notice = t 'page.todo_list.restore.successful'
+      else
+        flash.alert = t 'page.todo_list.restore.failed', errors: @todo_list.errors.full_messages.join(',')
+      end
     end
     redirect_back fallback_location: archived_todo_lists_path
   end
