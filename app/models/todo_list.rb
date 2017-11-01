@@ -8,6 +8,8 @@ class TodoList < ApplicationRecord
   has_many :items, class_name: 'TodoListItem', dependent: :destroy
 
   scope :sorted, -> { order :position }
+  scope :archived, -> { where archived: true }
+  scope :active, -> { where archived: false }
 
   attr_accessor :skip_position_validation
   validates :position, presence: true, uniqueness: {scope: :user_id}, unless: -> { archived || skip_position_validation }

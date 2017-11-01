@@ -1,8 +1,9 @@
 nav.uk-navbar-container(role="navigation" uk-navbar)
   .uk-navbar-left
     ul.uk-navbar-nav
-      li= link_to 'ToDo', root_path
+      li= link_to 'ToDo', root_path, class: 'page-title'
       li= link_to 'List', todo_lists_path
+      li= link_to 'Archive', archived_todo_lists_path
   .uk-navbar-right
     ul.uk-navbar-nav
       - if user_signed_in?

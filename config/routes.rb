@@ -4,8 +4,14 @@ Rails.application.routes.draw do
   root to: 'static#index'
 
   resources :todo_lists, path: 'todos', only: [:index, :new, :create, :edit, :update] do
+    collection do
+      get :archived
+    end
+
     member do
       put :sort, constraints: {format: :json}
+      put :archive
+      put :restore
     end
   end
 end

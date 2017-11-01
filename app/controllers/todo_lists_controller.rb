@@ -1,6 +1,10 @@
 class TodoListsController < ApplicationController
   def index
-    @todo_lists = current_user.todo_lists.sorted
+    @todo_lists = current_user.todo_lists.active.sorted
+  end
+
+  def archived
+    @todo_lists = current_user.todo_lists.archived.sorted
   end
 
   def new
@@ -40,6 +44,28 @@ class TodoListsController < ApplicationController
       @todo_list.update_position! after
     end
     render json: {status: :success}
+  end
+
+  def archive
+    @todo_list = current_user.todo_lists.find params[:id]
+    @todo_list.archived = true
+    if @todo_list.save
+      flash.notice = "Successfully archived #{@todo_list.title}"
+    else
+      flash.alert = "Could not archive #{@todo_list.title}: #{@todo_list.errors.full_messages.join ','}"
+    end
+    redirect_back fallback_location: todo_lists_path
+  end
+
+  def restore
+    @todo_list = current_user.todo_lists.find params[:id]
+    @todo_list.archived = false
+    if @todo_list.save
+      flash.notice = "Successfully restored #{@todo_list.title}"
+    else
+      flash.alert = "Could not restore #{@todo_list.title}: #{@todo_list.errors.full_messages.join ','}"
+    end
+    redirect_back fallback_location: archived_todo_lists_path
   end
 
   private
