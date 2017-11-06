@@ -23,12 +23,16 @@ RSpec.describe TodoList do
       to_move = todo_lists.find 5
       move_after = todo_lists.find 8
 
+      old_attributes = to_move.attributes.dup
+
       to_move.update_position! move_after
 
       expect(todo_lists.sorted.map &:id).to eq [1, 2, 3, 4, 6, 7, 8, 5, 9, 10]
       expect(todo_lists.sorted.map &:position).to eq [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
       expect(touched_ids).to eq [6, 7, 8, 5]
+
+      expect(to_move.reload.attributes).to_not eq old_attributes
     end
 
     it 'updates all positions before the moved list' do
@@ -42,15 +46,19 @@ RSpec.describe TodoList do
       to_move = todo_lists.find 6
       move_after = todo_lists.find 2
 
+      old_attributes = to_move.attributes.dup
+
       to_move.update_position! move_after
 
       expect(todo_lists.sorted.map &:id).to eq [1, 2, 6, 3, 4, 5, 7, 8, 9, 10]
       expect(todo_lists.sorted.map &:position).to eq [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
       expect(touched_ids).to eq [3, 4, 5, 6]
+
+      expect(to_move.reload.attributes).to_not eq old_attributes
     end
 
-    it 'does nothing if its inserted at the same position' do
+    it 'saves the position but changes nothing if its inserted at the same position' do
       expect(todo_lists.sorted.map &:id).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       expect(todo_lists.sorted.map &:position).to eq [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
@@ -61,12 +69,16 @@ RSpec.describe TodoList do
       to_move = todo_lists.find 6
       move_after = todo_lists.find 5
 
+      old_attributes = to_move.attributes.dup
+
       to_move.update_position! move_after
 
       expect(todo_lists.sorted.map &:id).to eq [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
       expect(todo_lists.sorted.map &:position).to eq [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
 
-      expect(touched_ids).to eq []
+      expect(touched_ids).to eq [6]
+
+      expect(to_move.reload.attributes).to eq old_attributes
     end
   end
 end
