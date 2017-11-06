@@ -1,5 +1,7 @@
-section.todo-list data-todo-list-id=todo_list.id
+article.todo-list data-todo-list-id=todo_list.id
   header
+    .uk-sortable-handle
+      span.uk-sortable-handle.uk-margin-small-right uk-icon="table"
     = todo_list.title
     ul.uk-iconnav.uk-align-right
       - if actions.include? :edit
@@ -11,9 +13,13 @@ section.todo-list data-todo-list-id=todo_list.id
       - if actions.include? :destroy
         li= link_to '', todo_list_path(todo_list), method: :delete, 'uk-icon': 'trash', 'uk-tooltip': '', title: t('page.actions.destroy')
 
-  p= todo_list.description
+  - if todo_list.items.any? || !todo_list.description.blank?
+    section
+      - unless todo_list.description.blank?
+        p= todo_list.description
 
-  ul.todo-list-items
-    - todo_list.items.each do |item|
-      li.todo-list-item class=('completed' if item.completed)
-        = item.description
+      - if todo_list.items.any?
+        ul.todo-list-items
+          - todo_list.items.each do |item|
+            li.todo-list-item class=('completed' if item.completed)
+              = item.description

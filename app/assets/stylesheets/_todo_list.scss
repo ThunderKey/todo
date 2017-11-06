@@ -1,15 +1,17 @@
-
-
-section.todo-list {
+article.todo-list {
   @extend .uk-card;
   @extend .uk-card-default;
-  @extend .uk-card-body;
+  @extend .uk-card-small;
 
   height: 100%;
 
+  .uk-sortable-handle {
+    display: inline-block;
+  }
+
   header {
+    @extend .uk-card-header;
     @extend .uk-card-title;
-    width: 100%;
 
     > .uk-iconnav {
       display: inline-flex;
@@ -20,6 +22,18 @@ section.todo-list {
         margin-top: auto;
         margin-bottom: auto;
       }
+    }
+  }
+
+  section {
+    @extend .uk-card-body;
+
+    p {
+      margin-bottom: 0;
+    }
+
+    ul {
+      margin-top: $card-small-padding;
     }
   }
 }

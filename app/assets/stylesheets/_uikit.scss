@@ -10,5 +10,13 @@ $inverse-navbar-nav-item-color: $inverse-base-link-color;
 $navbar-color-mode: light;
 $navbar-background: $global-secondary-background;
 
+$card-small-padding: 10px;
+$card-small-body-padding-horizontal:   $card-small-padding;
+$card-small-body-padding-vertical:     $card-small-padding;
+$card-small-header-padding-horizontal: $card-small-padding;
+$card-small-header-padding-vertical:   $card-small-padding;
+$card-small-footer-padding-horizontal: $card-small-padding;
+$card-small-footer-padding-vertical:   $card-small-padding;
+
 // 4. Import UIkit.
 @import "uikit/uikit-theme.scss";
