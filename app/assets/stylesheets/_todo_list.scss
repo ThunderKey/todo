@@ -1,3 +1,20 @@
+.todo-list-section {
+  @extend .uk-card;
+  @extend .uk-card-default;
+  @extend .uk-card-small;
+
+  height: 100%;
+
+  > header {
+    @extend .uk-card-header;
+    @extend .uk-card-title;
+  }
+
+  > .todo-lists {
+    @extend .uk-card-body;
+  }
+}
+
 article.todo-list {
   @extend .uk-card;
   @extend .uk-card-default;
@@ -9,7 +26,7 @@ article.todo-list {
     display: inline-block;
   }
 
-  header {
+  > header {
     @extend .uk-card-header;
     @extend .uk-card-title;
 
@@ -25,7 +42,7 @@ article.todo-list {
     }
   }
 
-  section {
+  > section {
     @extend .uk-card-body;
 
     p {
@@ -33,6 +50,9 @@ article.todo-list {
     }
 
     ul {
+      @extend .uk-list;
+      @extend .uk-list-bullet;
+
       margin-top: $card-small-padding;
     }
   }

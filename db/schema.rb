@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20171030084933) do
+ActiveRecord::Schema.define(version: 20171104113016) do
 
   create_table "todo_list_items", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8" do |t|
     t.text "description", null: false
@@ -30,6 +30,7 @@ ActiveRecord::Schema.define(version: 20171030084933) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "position", null: false
+    t.datetime "planned_at"
     t.index ["user_id"], name: "index_todo_lists_on_user_id"
   end
 

@@ -3,6 +3,7 @@ nav.uk-navbar-container(role="navigation" uk-navbar)
     ul.uk-navbar-nav
       li= link_to t('page.layout.title'), root_path, class: 'page-title'
       li= link_to t('page.layout.list'), todo_lists_path
+      li= link_to t('page.layout.plan'), plan_todo_lists_path
       li= link_to t('page.layout.archive'), archived_todo_lists_path
   .uk-navbar-right
     ul.uk-navbar-nav

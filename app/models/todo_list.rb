@@ -25,23 +25,23 @@ class TodoList < ApplicationRecord
     old_position = position
     self.position = after ? after.position + 1 : 0
 
-    return if position == old_position
-
-    others = user.todo_lists.sorted
-    if old_position > position
-      others = others.where(position: (position...old_position))
-      others.each do |other|
-        other.position += 1
-        other.skip_position_validation = true
-        other.save
-      end
-    else
-      self.position -= 1
-      others = others.where(position: ((old_position + 1)..position))
-      others.each do |other|
-        other.position -= 1
-        other.skip_position_validation = true
-        other.save
+    if position != old_position
+      others = user.todo_lists.sorted
+      if old_position > position
+        others = others.where(position: (position...old_position))
+        others.each do |other|
+          other.position += 1
+          other.skip_position_validation = true
+          other.save!
+        end
+      else
+        self.position -= 1
+        others = others.where(position: ((old_position + 1)..position))
+        others.each do |other|
+          other.position -= 1
+          other.skip_position_validation = true
+          other.save!
+        end
       end
     end
     save!

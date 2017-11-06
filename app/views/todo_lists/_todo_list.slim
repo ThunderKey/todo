@@ -4,6 +4,9 @@ article.todo-list data-todo-list-id=todo_list.id
       span.uk-sortable-handle.uk-margin-small-right uk-icon="table"
     = todo_list.title
     ul.uk-iconnav.uk-align-right
+      - if todo_list.planned_at
+        li
+          span(uk-icon='clock' uk-tooltip title=l(todo_list.planned_at))
       - if actions.include? :edit
         li= link_to '', edit_todo_list_path(todo_list), 'uk-icon': 'file-edit', 'uk-tooltip': '', title: t('page.actions.edit')
       - if actions.include? :archive

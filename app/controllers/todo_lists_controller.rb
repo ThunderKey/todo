@@ -3,6 +3,21 @@ class TodoListsController < ApplicationController
     @todo_lists = current_user.todo_lists.active.sorted
   end
 
+  def plan
+    start_time = DateTime.now.beginning_of_day
+    end_time = 6.days.from_now.end_of_day
+    todo_lists = current_user.todo_lists
+    .active.sorted
+    .where('planned_at IS NULL OR planned_at BETWEEN ? AND ?', start_time, end_time)
+    @todo_lists_by_date = {
+      nil => [],
+    }
+    (start_time.to_date..end_time.to_date).each {|d| @todo_lists_by_date[d] = []}
+    todo_lists.each do |todo_list|
+      @todo_lists_by_date[todo_list.planned_at&.to_date] << todo_list
+    end
+  end
+
   def archived
     @todo_lists = current_user.todo_lists.archived.sorted
   end
@@ -41,6 +56,19 @@ class TodoListsController < ApplicationController
     after_id = params.permit(:after)[:after]
     after = after_id && current_user.todo_lists.find(after_id)
     @todo_list.transaction do
+      if params.has_key? :plannedAt
+        planned_at = params.permit(:plannedAt)[:plannedAt]
+        if planned_at.blank?
+          @todo_list.planned_at = nil
+        else
+          begin
+            @todo_list.planned_at = DateTime.parse planned_at
+          rescue ArgumentError
+            render json: {status: 400, error: 'Invalid Date'}, status: 400
+            return
+          end
+        end
+      end
       @todo_list.update_position! after
     end
     render json: {status: :success}

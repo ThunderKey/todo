@@ -6,6 +6,7 @@ Rails.application.routes.draw do
   resources :todo_lists, path: 'todos' do
     collection do
       get :archived
+      get :plan
     end
 
     member do
