@@ -41,6 +41,8 @@ gem 'omniauth-keltec'
 
 gem 'gemsurance'
 
+gem 'rails-i18n'
+
 source 'https://rails-assets.org' do
   gem 'rails-assets-uikit', '~> 3.0.0.beta'
   gem 'rails-assets-jquery'
