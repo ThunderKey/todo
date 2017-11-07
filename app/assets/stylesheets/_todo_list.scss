@@ -2,16 +2,35 @@
   @extend .uk-card;
   @extend .uk-card-default;
   @extend .uk-card-small;
+  @extend .uk-background-muted;
 
   height: 100%;
+  display: flex;
+  flex-flow: column;
 
   > header {
     @extend .uk-card-header;
     @extend .uk-card-title;
   }
 
-  > .todo-lists {
+  > .todo-list-section-body {
     @extend .uk-card-body;
+    margin: 0;
+    flex: 1;
+
+    > .todo-lists {
+      height: 100%;
+    }
+  }
+}
+
+.todo-list-section-body {
+  transition: background-color 1s;
+}
+
+.todo-list-drag {
+  .todo-list-section-body {
+    background-color: darken($global-muted-background, 5%);
   }
 }
 
@@ -34,6 +53,7 @@ article.todo-list {
       display: inline-flex;
       height: 1.4em;
       margin: 0;
+      padding: 0;
 
       > li {
         margin-top: auto;

@@ -8,7 +8,8 @@
               time(datetime=l(date) title=l(date) uk-tooltip)= l date, format: :weekday
             - else
               = t 'page.todo_list.empty_date'
-        ul.todo-lists.uk-list uk-sortable='handle: .uk-sortable-handle; group: todo-lists'
-          - todo_lists.each do |todo_list|
-            li
-              = render partial: 'todo_list', locals: {todo_list: todo_list, actions: [:edit, :archive]}
+        .todo-list-section-body
+          ul.todo-lists.uk-list uk-sortable='handle: .uk-sortable-handle; group: todo-lists'
+            - todo_lists.each do |todo_list|
+              li
+                = render partial: 'todo_list', locals: {todo_list: todo_list, actions: [:edit, :archive]}

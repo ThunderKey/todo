@@ -48,9 +48,14 @@ updateSortOrder = (element) ->
   Api.put "/todos/#{id}/sort.json", data
 
 document.addEventListener 'turbolinks:load', ->
-  $('.todo-lists').on 'change', (event, sortable, movedElements) ->
-    for element in movedElements
-      newSortable = $(element).parents('.todo-lists')[0]
-      # only act on the move to event
-      if newSortable == sortable.$el[0]
-        updateSortOrder element
+  $('.todo-lists')
+    .on 'change', (event, todoLists, movedElements) ->
+      for element in movedElements
+        newTodoLists = $(element).parents('.todo-lists')[0]
+        # only act on the move to event
+        if newTodoLists == todoLists.$el[0]
+          updateSortOrder element
+    .on 'start', (event, todoLists) ->
+      $('body').addClass 'todo-list-drag'
+    .on 'stop', (event, todoLists) ->
+      $('body').removeClass 'todo-list-drag'
