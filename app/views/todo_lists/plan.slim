@@ -1,15 +1,1 @@
-.uk-grid-small(class='uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m' uk-grid)
-  - @todo_lists_by_date.each do |date, todo_lists|
-    div
-      .todo-list-section
-        header
-          h2
-            - if date
-              time(datetime=l(date) title=l(date) uk-tooltip)= l date, format: :weekday
-            - else
-              = t 'page.todo_list.empty_date'
-        .todo-list-section-body
-          ul.todo-lists.uk-list uk-sortable='handle: .uk-sortable-handle; group: todo-lists'
-            - todo_lists.each do |todo_list|
-              li
-                = render partial: 'todo_list', locals: {todo_list: todo_list, actions: [:edit, :archive]}
+= render partial: 'grouped_todo_lists', locals: {grouped_todo_lists: @todo_lists_by_date, actions: [:edit, :archive], group_sortable: true}

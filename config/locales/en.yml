@@ -2,6 +2,7 @@ en:
   page:
     layout:
       title: ToDo
+      dashboard: Dashboard
       list: List
       plan: Plan
       archive: Archive
@@ -35,6 +36,9 @@ en:
         successful: ToDo list deleted successfully
         not_archived: The ToDo list must be archived before it can be deleted
       empty_date: Not yet planned
+      past: Past
+      current: Due Today
+      not_planned: Not Planned
     user:
       update:
         successful: User updated successfully

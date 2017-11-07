@@ -1,0 +1,19 @@
+.uk-grid-small(class='uk-child-width-1-1 uk-child-width-1-2@s uk-child-width-1-4@m' uk-grid)
+  - grouped_todo_lists.each do |title, todo_lists|
+    div
+      .todo-list-section
+        header
+          h2
+            - if title.is_a?(Date) || title.is_a?(Time)
+              time(datetime=l(title) title=l(title) uk-tooltip)= l title, format: :weekday
+            - elsif title.is_a? String
+              = title
+            - elsif title.is_a? Symbol
+              = t title, scope: 'page.todo_list'
+            - else
+              = t 'page.todo_list.empty_date'
+        .todo-list-section-body
+          ul.todo-lists.uk-list uk-sortable="handle: .uk-sortable-handle#{'; group: todo-lists' if group_sortable}"
+            - todo_lists.each do |todo_list|
+              li
+                = render partial: 'todo_lists/todo_list', locals: {todo_list: todo_list, actions: actions}

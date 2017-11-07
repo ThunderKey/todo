@@ -6,14 +6,15 @@ class TodoListsController < ApplicationController
   def plan
     start_time = Time.zone.now.beginning_of_day
     end_time = 6.days.from_now.end_of_day
-    todo_lists = current_user.todo_lists
-    .active.sorted
-    .where('planned_at IS NULL OR planned_at BETWEEN ? AND ?', start_time, end_time)
+    todo_lists = current_user.todo_lists.active.sorted
     @todo_lists_by_date = {
+      past: todo_lists.where('planned_at < ?', start_time),
       nil => [],
     }
     (start_time.to_date..end_time.to_date).each {|d| @todo_lists_by_date[d] = []}
-    todo_lists.each do |todo_list|
+    todo_lists
+      .where('planned_at IS NULL OR planned_at BETWEEN ? AND ?', start_time, end_time)
+      .each do |todo_list|
       @todo_lists_by_date[todo_list.planned_at&.to_date] << todo_list
     end
   end

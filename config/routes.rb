@@ -3,6 +3,8 @@ Rails.application.routes.draw do
 
   root to: 'static#index'
 
+  get :dashboard, to: 'dashboard#index'
+
   resource :user, only: [:edit, :update]
 
   resources :todo_lists, path: 'todos' do
