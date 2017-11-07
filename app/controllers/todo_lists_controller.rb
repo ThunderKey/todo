@@ -37,7 +37,7 @@ class TodoListsController < ApplicationController
     @todo_list = current_user.todo_lists.new todo_list_params
     if @todo_list.save
       flash.notice = t 'page.todo_list.created.successful'
-      redirect_to todo_lists_path
+      redirect_back fallback_location: todo_lists_path
     else
       render :new
     end
@@ -48,7 +48,7 @@ class TodoListsController < ApplicationController
     @todo_list.update_attributes todo_list_params
     if @todo_list.save
       flash.notice = t 'page.todo_list.updated.successful'
-      redirect_to todo_lists_path
+      redirect_back fallback_location: todo_lists_path
     else
       render :edit
     end
