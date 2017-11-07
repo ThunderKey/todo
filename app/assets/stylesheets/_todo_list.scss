@@ -20,6 +20,7 @@
 
     > .todo-lists {
       height: 100%;
+      margin-bottom: 0;
     }
   }
 }
@@ -32,6 +33,10 @@
   .todo-list-section-body {
     background-color: darken($global-muted-background, 5%);
   }
+}
+
+.todo-lists {
+  margin-bottom: $global-small-gutter;
 }
 
 article.todo-list {
