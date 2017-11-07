@@ -1,0 +1,14 @@
+- if @user.errors.any?
+  .uk-alert.uk-alert-danger
+    ul.uk-list.uk-list-divider
+      - @user.errors.full_messages.each do |message|
+        li= message
+
+= form_for @user, url: user_path, class: 'uk-form-stacked' do |f|
+  = form_field f, :time_zone do |key, cls, name|
+    = f.select key, time_zones_for_select, {}, class: "uk-select #{cls}"
+
+  .form-row(uk-grid)
+    .form-label.empty
+    .form-field
+      = f.button t('page.actions.save'), type: :submit, class: 'uk-button uk-button-primary'

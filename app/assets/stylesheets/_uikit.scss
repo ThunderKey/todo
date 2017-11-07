@@ -9,6 +9,9 @@
 $inverse-navbar-nav-item-color: $inverse-base-link-color;
 $navbar-color-mode: light;
 $navbar-background: $global-secondary-background;
+.uk-navbar .uk-navbar-dropdown {
+  background: $navbar-background;
+}
 
 $card-small-padding: 10px;
 $card-small-body-padding-horizontal:   $card-small-padding;

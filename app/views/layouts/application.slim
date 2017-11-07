@@ -18,6 +18,8 @@ html lang=I18n.locale dir="ltr"
     header role="banner"
       = render partial: 'layouts/navigation'
     main.uk-container role="main"
+      - if @time_zone_missing
+        = render partial: 'layouts/flash_message', locals: {type: :alert, message: "#{t 'page.layout.missing_time_zone'} #{link_to t('page.layout.edit_profile'), edit_user_path}".html_safe}
       - flash.each do |k, msg|
         = render partial: 'layouts/flash_message', locals: {type: k, message: msg}
       = yield

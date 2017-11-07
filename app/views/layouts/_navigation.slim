@@ -8,6 +8,11 @@ nav.uk-navbar-container(role="navigation" uk-navbar)
   .uk-navbar-right
     ul.uk-navbar-nav
       - if user_signed_in?
-        li=link_to t('page.layout.logout'), destroy_user_session_path, method: :delete
+        li.uk-parent
+          = link_to current_user.email, edit_user_path
+          .uk-navbar-dropdown
+            ul.uk-nav.uk-navbar-dropdown-nav
+              li=link_to t('page.layout.edit_profile'), edit_user_path
+              li=link_to t('page.layout.logout'), destroy_user_session_path, method: :delete
       - else
         li=link_to t('page.layout.login'), new_user_session_path

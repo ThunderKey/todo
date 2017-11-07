@@ -7,6 +7,8 @@ en:
       archive: Archive
       login: Login
       logout: Logout
+      missing_time_zone: You have no time zone selected. Please specify one in your profile.
+      edit_profile: Edit profile
     actions:
       new: New
       edit: Edit
@@ -33,6 +35,10 @@ en:
         successful: ToDo list deleted successfully
         not_archived: The ToDo list must be archived before it can be deleted
       empty_date: Not yet planned
+    user:
+      update:
+        successful: User updated successfully
+        time_zone_changed: The time zone has changed. Reminders are now interpreted within the new time zone and could differ from what was set previously.
   activerecord:
     models:
       todo_list: ToDo List
@@ -40,6 +46,8 @@ en:
       todo_list:
         title: Title
         description: Description
+      user:
+        time_zone: Time zone
   date:
     formats:
       weekday: '%A'
