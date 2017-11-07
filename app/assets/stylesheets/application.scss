@@ -22,6 +22,7 @@ header[role="banner"] .page-title {
 }
 
 main.uk-container {
+  max-width: inherit;
   padding-top: $global-small-gutter;
 
   > * {
