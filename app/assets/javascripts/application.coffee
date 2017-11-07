@@ -16,4 +16,3 @@
 #= require uikit/uikit-icons
 #= require _todo_lists
 #= require_self
-#= require turbolinks

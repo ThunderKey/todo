@@ -47,7 +47,7 @@ updateSortOrder = (element) ->
       null
   Api.put "/todos/#{id}/sort.json", data
 
-document.addEventListener 'turbolinks:load', ->
+$ ->
   $('.todo-lists')
     .on 'change', (event, todoLists, movedElements) ->
       for element in movedElements
