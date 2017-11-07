@@ -11,6 +11,7 @@ class TodoListsController < ApplicationController
       past: todo_lists.where('planned_at < ?', start_time),
       nil => [],
     }
+    @todo_lists_by_date.delete(:past) if @todo_lists_by_date[:past].empty?
     (start_time.to_date..end_time.to_date).each {|d| @todo_lists_by_date[d] = []}
     todo_lists
       .where('planned_at IS NULL OR planned_at BETWEEN ? AND ?', start_time, end_time)
