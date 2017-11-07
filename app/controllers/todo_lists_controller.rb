@@ -1,5 +1,6 @@
 class TodoListsController < ApplicationController
   def index
+    @new_todo_list = current_user.todo_lists.new
     @todo_lists = current_user.todo_lists.active.sorted
   end
 
