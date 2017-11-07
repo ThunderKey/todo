@@ -4,7 +4,7 @@ class TodoListsController < ApplicationController
   end
 
   def plan
-    start_time = DateTime.now.beginning_of_day
+    start_time = Time.zone.now.beginning_of_day
     end_time = 6.days.from_now.end_of_day
     todo_lists = current_user.todo_lists
     .active.sorted
@@ -62,7 +62,7 @@ class TodoListsController < ApplicationController
           @todo_list.planned_at = nil
         else
           begin
-            @todo_list.planned_at = DateTime.parse planned_at
+            @todo_list.planned_at = Time.parse planned_at
           rescue ArgumentError
             render json: {status: 400, error: 'Invalid Date'}, status: 400
             return
