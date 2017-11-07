@@ -9,8 +9,14 @@
 $inverse-navbar-nav-item-color: $inverse-base-link-color;
 $navbar-color-mode: light;
 $navbar-background: $global-secondary-background;
-.uk-navbar .uk-navbar-dropdown {
-  background: $navbar-background;
+$navbar-nav-item-height: 100%;
+.uk-navbar {
+  flex-wrap: wrap;
+  padding: 1.2rem 0;
+
+  .uk-navbar-dropdown {
+    background: $navbar-background;
+  }
 }
 
 $card-small-padding: 10px;
