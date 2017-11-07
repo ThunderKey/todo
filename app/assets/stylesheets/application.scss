@@ -21,6 +21,10 @@ header[role="banner"] .page-title {
   font-size: 1.3em;
 }
 
-main {
+main.uk-container {
   padding-top: $global-small-gutter;
+
+  > * {
+    margin-bottom: $global-small-gutter;
+  }
 }
