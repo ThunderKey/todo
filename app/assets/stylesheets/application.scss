@@ -24,6 +24,7 @@ header[role="banner"] .page-title {
 main.uk-container {
   max-width: inherit;
   padding-top: $global-small-gutter;
+  padding-bottom: $global-small-gutter;
 
   > * {
     margin-bottom: $global-small-gutter;
