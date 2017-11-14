@@ -35,7 +35,6 @@ en:
       destroy:
         successful: ToDo list deleted successfully
         not_archived: The ToDo list must be archived before it can be deleted
-      empty_date: Not yet planned
       past: Past
       current: Due Today
       not_planned: Not Planned

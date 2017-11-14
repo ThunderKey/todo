@@ -4,6 +4,21 @@
   @extend .uk-card-small;
   @extend .uk-background-muted;
 
+  &.section-danger {
+    background-color: $alert-danger-background;
+
+    > header {
+      color: $alert-danger-color;
+    }
+  }
+  &.section-warning {
+    background-color: $alert-warning-background;
+
+    > header {
+      color: $alert-warning-color;
+    }
+  }
+
   height: 100%;
   display: flex;
   flex-flow: column;
@@ -11,6 +26,10 @@
   > header {
     @extend .uk-card-header;
     @extend .uk-card-title;
+
+    h2 {
+      color: inherit;
+    }
   }
 
   > .todo-list-section-body {

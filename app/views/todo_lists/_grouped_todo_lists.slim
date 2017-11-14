@@ -1,7 +1,7 @@
 .uk-grid-small(class=grouped_column_classes(grouped_todo_lists.count) uk-grid)
   - grouped_todo_lists.each do |title, todo_lists|
     div
-      .todo-list-section
+      .todo-list-section class=section_title_to_class(title)
         header
           h2
             - if title.is_a?(Date) || title.is_a?(Time)
@@ -11,7 +11,7 @@
             - elsif title.is_a? Symbol
               = t title, scope: 'page.todo_list'
             - else
-              = t 'page.todo_list.empty_date'
+              = t 'page.todo_list.not_planned'
         .todo-list-section-body
           ul.todo-lists.uk-list(uk-sortable="handle: .uk-sortable-handle#{'; group: todo-lists' if group_sortable}" class=grouped_sub_column_classes(grouped_todo_lists.count) uk-grid)
             - todo_lists.each do |todo_list|
