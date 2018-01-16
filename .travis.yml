@@ -14,17 +14,21 @@ services:
 env:
   global:
     - "RAILS_ENV=test"
-    - secure: BCYZ5t0iMIot64tNH6oO20QwU0i77ZcxUZTjyvGTJXajvzCEyL0HsrORowDFWscqemLHG8Vbq1xARXItS1M48hQXQMT6O1KbnGCQQnRavXkxoo8bI+X9IO30/c5UL8mKmQhNltqCDi73+E05cyIemN64q6sMeTJIdtnjHZsP3GJWImvqR3BJ2nFij9lcMEJljkR6pLHkTx/+SMM3LzzqjKAWTUtucKIXVCAuhWPZ1ddijalelxxA/U4O9ErTCd5DUGbHbXUygtPkkmVr+TZpgKTBxdi1hZr0ZTNdNnugJ1OcfMmW9G728igX8lezo/OWqyGs9H6z+yj0glbfFPaE37QueSczdLYzj1v6d0VQRVhtu0stEakdNhcMBrOjhgqyYnrAFrx+3VcHFmDYGGnygQCc7nrDST6r1Sq0m8LT0Lpw4NKai810ds3pD7JVPXR2OgmVuRgZCGNEzRK0b4DeA7lzcXulYsV3yUbHwZ466W9A8S2oBEblCJ25wyHuJcJpZbrAKtltqIMYUSmarAP4M/CjFn39vOM7d1BfcvDjG4jbjbfSPzQ09wkKU36m1W1EL5RLPvtpKvKQkQ2kEzobFKCsKraYZmBH6e1Z++JQJ+VO225Q6UGEPZtjoPcwO/NcvNtVYHcCg3TTsO8nWYbTQJICy+QUbHsFXuyR+WpsAnQ=
+    - secure: "u4FqklO9FOLvlKMQNmTmyyiYGNl1+hcdIZe7ScBdwgcRVR/xOxJMOSvqVkx07cm4aI6Vi3JuUpU+j6gWFU55+UHih8I6VFrrCu6DhRz+nimjK84quNK9c9EPaxk2ROlOm0lO0sNfxCliDsl58djLppWW7nmCX+If8JHZOJ49OvzFRK5IorMNZGXYbKZZSAYMMt8TPEDnfv9pgqWc7iRS5SOy+Dqy9CBiFuHLdY+ccrJ7N4pjBtUpT8QPbZgwTZrh3HhsP67V2SAWeZDuDVORwIseatg6KhYNUgHHDHTzvDNmgWWGdNUxSbPsppasbUZjlM+iQ00dpOCTsxNPaBCiPqpDG0EqsLc35wdF7NlD0OLlDmnCVLPLYUiSH4iunlPoiaJz/LcAckORwi7bjorbBy6kAdsR8ER+RYXYg938/5OK/FrBOKMwPzYCjSTNOq1O+ZcXtU6VQuMV9fv3gyJ30Qp9SFovmlYX4dd6UUByGRYY5iMAAuPCyv5p/3a7/FI7wmXCttZzLr+DLU1oA4LznCC7Fag+aAE4Ktobaak2cTmg/6LEkTs+M2stWA4rdX5Ei1iSBrRN4FECBCjNuh2YfizdcCyowa2RXIB445sEc2B46QiNOvRV0wCPFvjiYH2joevYQO6MtSXLn+qYQZphPffdjb33HBTAUGTMCwZq/mw="
 before_install:
   - mysql -e 'CREATE DATABASE IF NOT EXISTS todo_test'
 before_script:
   - cp config/secrets.yml.travis config/secrets.yml
   - cp config/database.yml.travis config/database.yml
   - bundle exec rake db:migrate
+
+  - curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+  - chmod +x ./cc-test-reporter
+  - ./cc-test-reporter before-build
 script:
   - bundle exec rspec
-after_success:
-  - bundle exec codeclimate-test-reporter
+after_script:
+  - ./cc-test-reporter after-build --exit-code $TRAVIS_TEST_RESULT
 notifications:
   email:
     - nicolasganz37+travis@gmail.com
