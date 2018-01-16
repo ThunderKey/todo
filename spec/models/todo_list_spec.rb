@@ -1,9 +1,9 @@
 require 'rails_helper'
 
 RSpec.describe TodoList do
-  let :user { create :user }
+  let(:user) { create :user }
 
-  let :todo_lists { user.reload.todo_lists }
+  let(:todo_lists) { user.reload.todo_lists }
 
   context :update_position! do
     before do
