@@ -40,4 +40,4 @@ set :keep_releases, 3
 set :rvm_type, :system
 
 # Defaults to: 'default'
-set :rvm_ruby_version, 'ruby-2.4.3'
+set :rvm_ruby_version, 'ruby-2.5.0'
